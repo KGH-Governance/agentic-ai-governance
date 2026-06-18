@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noarchive">
+  <title>Agentic AI 거버넌스 및 통제 아키텍처</title>
+  <style>
+    :root {
+      --bg: #eef2f6;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --line: #d8dee8;
+      --primary: #163654;
+      --primary-light: #e8eef5;
+      --shadow: rgba(15, 23, 42, 0.10);
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      line-height: 1.65;
+    }
+
+    body {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    .wrap {
+      box-sizing: border-box;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 36px 16px 56px;
+    }
+
+    .hero {
+      background: var(--card);
+      border-radius: 22px;
+      box-shadow: 0 10px 28px var(--shadow);
+      padding: 38px 34px;
+      border: 1px solid rgba(216, 222, 232, 0.75);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 14px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--primary);
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.25;
+      letter-spacing: -0.04em;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      letter-spacing: -0.02em;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-top: 22px;
+      color: #374151;
+      font-size: 14px;
+    }
+
+    .meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fafbfc;
+    }
+
+    .section {
+      margin-top: 22px;
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: 0 8px 24px var(--shadow);
+      padding: 28px;
+      border: 1px solid rgba(216, 222, 232, 0.75);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--primary);
+      font-size: 22px;
+      letter-spacing: -0.03em;
+    }
+
+    .guide {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      display: block;
+      padding: 18px 18px 17px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      color: var(--text);
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(22, 54, 84, 0.45);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.10);
+    }
+
+    .card strong {
+      display: block;
+      color: var(--primary);
+      font-size: 17px;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+
+    .card span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: -0.01em;
+    }
+
+    .full {
+      margin-bottom: 14px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
+
+    .notice {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer {
+      margin-top: 24px;
+      color: #6b7280;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 720px) {
+      .wrap {
+        padding: 18px 10px 34px;
+      }
+
+      .hero, .section {
+        padding: 24px 18px;
+        border-radius: 18px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .subtitle {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero" aria-label="문서 소개">
+      <p class="eyebrow">Reference Model · Version 1.0</p>
+      <h1>Agentic AI 거버넌스 및 통제 아키텍처</h1>
+      <p class="subtitle">기업 Agentic AI의 안전한 구축·운영 및 통제를 위한 참조 모델</p>
+      <div class="meta" aria-label="문서 메타정보">
+        <span>작성자 김경훈</span>
+        <span>2026</span>
+        <span>웹 배포용 보호 문서</span>
+      </div>
+    </section>
+
+    <section class="section" aria-label="전체본 및 파트별 문서 링크">
+      <h2>문서 보기</h2>
+      <p class="guide">전체본 또는 파트별 문서를 선택해 열람할 수 있습니다.</p>
+
+      <a class="card full" href="full.html" aria-label="전체본 열기">
+        <strong>전체본</strong>
+        <span>문서 전체를 한 번에 열람합니다.</span>
+      </a>
+
+      <div class="cards">
+        <a class="card" href="part1.html" aria-label="Part 1 열기">
+          <strong>Part 1. 도입부</strong>
+          <span>문서의 목적, 문제의식, 적용 관점</span>
+        </a>
+
+        <a class="card" href="part2.html" aria-label="Part 2 열기">
+          <strong>Part 2. 아키텍처 설계와 구축</strong>
+          <span>Agentic AI 운영 구조와 설계 원칙</span>
+        </a>
+
+        <a class="card" href="part3.html" aria-label="Part 3 열기">
+          <strong>Part 3. 운영 및 통제 체계</strong>
+          <span>운영 검증, 통제 기준, 의사결정 흐름</span>
+        </a>
+
+        <a class="card" href="part4.html" aria-label="Part 4 열기">
+          <strong>Part 4. 조직·관리 및 표준 연계</strong>
+          <span>관리체계, 역할 분담, 외부 기준과의 연계</span>
+        </a>
+
+        <a class="card" href="part5.html" aria-label="Part 5 열기">
+          <strong>Part 5. 실무 적용 시나리오</strong>
+          <span>도입·운영 단계별 적용 예시와 체크 관점</span>
+        </a>
+
+        <a class="card" href="part6.html" aria-label="Part 6 열기">
+          <strong>Part 6. 결론 및 정책 제언</strong>
+          <span>기업이 우선 정비해야 할 기준과 제언</span>
+        </a>
+      </div>
+
+      <div class="notice">
+        본 문서는 웹 배포용 보호 문서입니다. 무단 전재, 재배포, 임의 수정 및 상업적 이용을 금지합니다.
+      </div>
+    </section>
+
+    <footer class="footer">
+      © 2026 김경훈. All rights reserved.
+    </footer>
+  </main>
+</body>
+</html>
